@@ -55,7 +55,6 @@ int main(int argc, char *argv[]) {
         return 1;
     }
     
-    // Charger la première image pour la sélection du motif
     CImg<unsigned char> Image_lue(images[0].c_str());
     CImgDisplay Image_disp(Image_lue, "Poursuite de cible");
 
@@ -85,7 +84,6 @@ int main(int argc, char *argv[]) {
                 ny = std::abs(y1 - y0) + 1;
                 motif = Image_lue.get_crop(x0, y0, x1, y1);
                 
-                // Afficher la sélection dans l'image
                 Image_lue.draw_rectangle(x0, y0, x1, y1, red, 1, ~0U).display(Image_disp);
                 Image_lue.save("resultsSAD/result000.png");
                 std::cout << "Motif sélectionné aux coordonnées : (" << x0 << ", " << y0 << ") - (" << x1 << ", " << y1 << ")" << std::endl;
